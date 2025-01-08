@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 
 import passport from "passport";
 import session from "express-session";
-import ConnectMongoDB from "connect-mongodb-session";
+import connectMongo from "connect-mongodb-session";
 
 import { buildContext } from "graphql-passport";
 
@@ -67,7 +67,7 @@ app.use(
   }),
   express.json(),
   expressMiddleware(server, {
-    context: async ({ req }) => buildContext({ req }),
+    context: async ({ req, res }) => buildContext({ req, res }),
   })
 );
 

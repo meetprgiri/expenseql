@@ -1,7 +1,6 @@
-import passport, { serializeUser } from "passport";
+import passport from "passport";
 import bcrypt from "bcryptjs";
 
-import user from "../model/user.model.js";
 import { GraphQLLocalStrategy } from "graphql-passport";
 import User from "../model/user.model.js";
 
@@ -14,7 +13,7 @@ export const configurePassword = async () => {
   passport.deserializeUser(async (id, done) => {
     console.log("deserializing");
     try {
-      const user = await User.findBy(id);
+      const user = await User.findById(id);
       done(null, user);
     } catch (err) {
       done(err);

@@ -1,5 +1,5 @@
-import Transaction from "../model/transaction.model";
-import User from "../models/user.model.js";
+import Transaction from "../model/transaction.model.js";
+import User from "../model/user.model.js";
 
 const transactionResolver = {
   Query: {
