@@ -6,12 +6,10 @@ import User from "../model/user.model.js";
 
 export const configurePassword = async () => {
   passport.serializeUser((user, done) => {
-    console.log("serializeUser");
     done(null, user.id);
   });
 
   passport.deserializeUser(async (id, done) => {
-    console.log("deserializing");
     try {
       const user = await User.findById(id);
       done(null, user);

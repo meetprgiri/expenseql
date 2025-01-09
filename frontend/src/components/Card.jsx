@@ -17,10 +17,9 @@ const categoryColorMap = {
     // Add more categories and corresponding color classes as needed
 };
 
-const Card = ({ transaction, userdata }) => {
-    console.log("card", userdata)
+const Card = ({ transaction, authUser }) => {
     const [deleteTransaction, { loading }] = useMutation(DELETE_TRANSACTION, {
-        refetchQueries: ["GetTransactions"]
+        refetchQueries: ["GetTransactions", "GetTransactionStatistics"]
     })
 
     if (!transaction) return <p>loading..</p>
@@ -76,7 +75,7 @@ const Card = ({ transaction, userdata }) => {
                 <div className='flex justify-between items-center'>
                     <p className='text-xs text-black font-bold'>{formattedDate}</p>
                     <img
-                        src={"https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
+                        src={authUser?.profilePicture}
                         className='h-8 w-8 border rounded-full'
                         alt=''
                     />
